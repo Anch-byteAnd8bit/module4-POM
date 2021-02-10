@@ -15,7 +15,7 @@ class ProductPage(BasePage):
         self.should_be_basket()  # есть ли кнопка добавления в корзину
         self.add_product_to_basket()  # добавление в корзину
         self.get_code()  # получение кода
-        self.check_succedd()  # проверка сообщения об успехе
+        self.check_succeed()  # проверка сообщения об успехе
 
     def check_name_product(self):
         assert self.get_name_product() == self.name_product, "Product names do not match!"
@@ -37,6 +37,6 @@ class ProductPage(BasePage):
     def get_code(self):
         self.solve_quiz_and_get_code()
 
-    def check_succedd(self):
-        msg_succed = self.browser.find_element(*ProductPageLocators.MESSAGE_SUCCESS).text
-        assert self.name_product in msg_succed, "The item has not been added to the basket!"
+    def check_succeed(self):
+        msg_succeed = self.browser.find_element(*ProductPageLocators.MESSAGE_SUCCESS).text
+        assert self.name_product == msg_succeed, "The item has not been added to the basket!"
