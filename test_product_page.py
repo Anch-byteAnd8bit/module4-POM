@@ -69,7 +69,7 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.open()
     page.add_to_cart_only(product, price)
     page.solve_quiz_and_get_code()  # получение кода
-    page.check_succeed_messsage()
+    page.check_succeed_message()
 
 
 @pytest.mark.need_review
