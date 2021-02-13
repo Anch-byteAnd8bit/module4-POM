@@ -35,7 +35,10 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.BASKET_BUTTON), "Button for adding a product to the " \
                                                                             "basket isn't presented "
 
-    def check_succeed_messsage(self):
+    def check_succeed_message(self):
+        self.is_element_present_with_waiting(*ProductPageLocators.MESSAGE_SUCCESS), \
+           "Success message is not presented, but should be"
+
         msg_succeed = self.browser.find_element(*ProductPageLocators.MESSAGE_SUCCESS).text
         assert self.name_product == msg_succeed, "There is no suitable product name in the message"
 
