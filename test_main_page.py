@@ -30,7 +30,6 @@ def test_guest_should_see_login_page(browser):
     page.should_be_login_page()
 
 
-@pytest.mark.new
 def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
     page = BasketPage(browser, link)
@@ -42,7 +41,6 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     page.basket_should_be_empty()
 
 
-@pytest.mark.new
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     page = BasketPage(browser, link)
