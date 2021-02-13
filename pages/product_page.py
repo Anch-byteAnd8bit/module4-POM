@@ -41,7 +41,7 @@ class ProductPage(BasePage):
 
     def check_price(self):
         price = self.browser.find_element(*ProductPageLocators.PRICE_PRODUCT).text
-        assert self.price == price, "There is no matching product price in the message"
+        assert self.price_product == price, "There is no matching product price in the message"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.MESSAGE_SUCCESS), \
