@@ -40,16 +40,5 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     # Ожидаем, что есть текст о том что корзина пуста
     page.basket_should_be_empty()
 
-
-def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-    page = BasketPage(browser, link)
-    page.open()
-    # Переходит в корзину по кнопке в шапке сайта
-    page.go_to_basket_page_by_button_in_header()
-    # Ожидаем, что в корзине нет товаров
-    # Ожидаем, что есть текст о том что корзина пуста
-    page.basket_should_be_empty()
-
 # pytest -v --tb=line --language=en test_main_page.py
 # pytest -s -m "new" test_main_page.py

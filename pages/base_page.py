@@ -2,7 +2,6 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support import expected_conditions as EC
 import math
-import time
 
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -10,10 +9,9 @@ from pages.locators import BasePageLocators
 
 
 class BasePage:
-    def __init__(self, browser, url, timeout=10):
+    def __init__(self, browser, url):
         self.browser = browser
         self.url = url
-        # self.browser.implicitly_wait(timeout)
 
     def is_element_present(self, how, what):
         try:
@@ -38,8 +36,6 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
-        finally:
-            time.sleep(0)
 
     # элемент не появляется на странице в течение заданного времени
     def is_not_element_present(self, how, what, timeout=4):
@@ -50,6 +46,7 @@ class BasePage:
 
         return False
 
+    # элемент пропадает через некоторое время
     def is_disappeared(self, how, what, timeout=4):
         try:
             WebDriverWait(self.browser, timeout, 1, TimeoutException). \
@@ -69,3 +66,7 @@ class BasePage:
     def go_to_basket_page_by_button_in_header(self):
         basket = self.browser.find_element(*BasePageLocators.BASKET_LINK)
         basket.click()
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented, probably " \
+                                                                     "unauthorised user "

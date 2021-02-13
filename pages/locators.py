@@ -16,8 +16,16 @@ class ProductPageLocators():
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     BASKET_LINK = (By.CSS_SELECTOR, ".btn-group > a.btn.btn-default")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class BasketPageLocators():
     TEXT_EMPTY_BASKET = (By.CSS_SELECTOR, "#content_inner > p")
     PRODUCT_IN_BASKET = (By.CSS_SELECTOR, "#content_inner .basket_summary")
+
+
+class RegistrationPageLocators():
+    INPUT_EMAIL = (By.CSS_SELECTOR, 'input[name = "registration-email"]')
+    INPUT_PASSWORD = (By.CSS_SELECTOR, 'input[name = "registration-password1"]')
+    INPUT_PASSWORD2 = (By.CSS_SELECTOR, 'input[name = "registration-password2"]')
+    BUTTON_REGISTRATION = (By.CSS_SELECTOR, 'button[name=registration_submit]')
